@@ -1,0 +1,20 @@
+[
+    {
+      "text": "Title",
+      "align": "start",
+      "filterable": true,
+      "sortable": true,
+      "value": "title"
+
+    },
+    { "text": "Description", "value": "description" },
+    { "text": "Domain", "value": "domain" },
+    { "text": "3DEXPERIENCE Release", "value": "release" },
+    { "text": "Technologies Used", "value": "tech" },
+    { "text": "Reference Project", "value": "refProject" },
+    { "text": "Contact Person", "value": "contact" },
+    { "text": "Status", "value": "status" },
+    { "text": "Published On", "value": "published" },
+    { "text": "Remarks", "value": "remarks" },
+    { "text": "Actions", "value": "action" }
+  ]

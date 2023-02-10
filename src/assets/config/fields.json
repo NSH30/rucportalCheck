@@ -1,0 +1,69 @@
+{
+    "fields": [
+        {
+            "type": "text",
+            "label": "Title",
+            "expression": "textfield",
+            "isRequired": true,
+            "value": "title"
+        },
+        {
+            "type": "text",
+            "label": "Description",
+            "expression": "textarea",
+            "value": "description",
+            "isRequired": true
+        },
+        {
+            "type": "text",
+            "label": "Domain",
+            "expression": "textfield",
+            "isRequired": true,
+            "value": "domain"
+        },
+        {
+            "type": "text",
+            "label": "3DExperience Relese",
+            "expression": "textfield",
+            "value": "release",
+            "isRequired": true
+        },
+        {
+            "type": "text",
+            "label": "Technologies Used ",
+            "expression": "textfield",
+            "isRequired": true,
+            "value": "tech"
+        },
+        {
+            "type": "text",
+            "label": "Reference Project",
+            "expression": "textfield",
+            "value": "refProject",
+            "isRequired": true
+        },
+        {
+            "type": "text",
+            "label": "Remarks",
+            "expression": "textarea",
+            "value": "remarks",
+            "isRequired": false
+        },
+        {
+            "type": "text",
+            "label": "Upload Image",
+            "expression": "imageInput",
+            "value": "Upload Image",
+            "isRequired": false
+        },
+        {
+            "type":"text",
+            "label":"UploadFile",
+            "expression":"fileInput",
+            "value":"UploadFile",
+            "isRequired":true
+
+        }
+
+    ]
+}

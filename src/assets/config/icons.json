@@ -1,0 +1,10 @@
+{"config": [    
+      {"iconName": "mdi-eye-outline"},
+
+      {"iconColor": "#77797C"},
+
+      {"event": "requestAccess"},
+
+      {"Tooltip": "Request-Preview"}  
+  ]
+}
