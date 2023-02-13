@@ -36,7 +36,7 @@
           :itemsPerPage="10"
         />
 
-        <admin-request
+        <!--  <admin-request
           v-if="bt3"
           :headers="childHeader"
           :data="rows"
@@ -45,8 +45,7 @@
           headerClass="tableHeader"
           :itemsPerPage="10"
         >
-        </admin-request>
-
+        </admin-request> -->
         <admin-panel
           v-if="bt3"
           :headers="headers"
@@ -84,7 +83,7 @@ import MyRequestTable from "./myRequestTable.vue";
 import CustomCellTable from "./custom-cell-table.vue";
 /* import RequestDialog from "./request-RUC-dialog.vue"; */
 import AdminPanel from "./admin-panel.vue";
-import AdminRequest from "./admin-request.vue";
+/* import AdminRequest from "./admin-request.vue"; */
 import AddRUC from "./addRUC.vue";
 import headers from "../assets/config/headers.json";
 import formData from "../assets/config/data.json";
@@ -99,7 +98,7 @@ export default {
     //RequestDialog,
     MyRequestTable,
     AdminPanel,
-    AdminRequest,
+    /*  AdminRequest, */
     AddRUC,
     // PreviewRuc,
   },

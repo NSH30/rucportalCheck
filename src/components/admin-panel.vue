@@ -8,6 +8,19 @@
     multiple
   >
     <v-expansion-panel>
+      <v-expansion-panel-header fluid>Pending Approval</v-expansion-panel-header>
+      <v-expansion-panel-content>
+        <customCellTable
+          :headers="headers"
+          :data="data"
+          :config="config"
+          headerClass="tableHeader"
+          :itemsPerPage="10"
+        />
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+
+    <v-expansion-panel>
       <v-expansion-panel-header fluid>All components</v-expansion-panel-header>
       <v-expansion-panel-content>
         <customCellTable

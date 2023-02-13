@@ -1,5 +1,12 @@
 <template>
-  <v-data-table
+  <customCellTable
+    :headers="headers"
+    :data="data"
+    :config="config"
+    headerClass="tableHeader"
+    :itemsPerPage="10"
+  />
+  <!-- <v-data-table
     :headers="headers"
     :items="data"
     :items-per-page="itemsPerPage"
@@ -47,11 +54,16 @@
         <span>Cancel Request</span>
       </v-tooltip>
     </template>
-  </v-data-table>
+  </v-data-table> -->
 </template>
 
 <script>
+import customCellTable from "/src/components/custom-cell-table";
+
 export default {
+  components: {
+    customCellTable,
+  },
   data() {
     return {
       greeting: "Hello World!",
