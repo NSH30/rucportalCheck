@@ -131,6 +131,7 @@ export default {
       default: "",
     },
   },
+
   /*  created() {
       console.log("**inside Images****");
       fetch("../assets/images.json")
@@ -138,7 +139,7 @@ export default {
         .then((data) => {
           this.images = data.images;
         });
-    },
+    },+
   */
 
   methods: {
