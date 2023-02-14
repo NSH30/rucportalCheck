@@ -1,0 +1,35 @@
+[
+    {
+      "title": "Test Component 1",
+      "description": "Test component description",
+      "domain": "PLM",
+      "release": "2022x",
+      "tech": "enovia",
+      "refProject": "",
+      "contact": "Ravi",
+      "status": "Requested",
+      "remarks": ""
+    },
+    {
+      "title": "Test Component 2",
+      "description": "Test component description",
+      "domain": "PLM",
+      "release": "2022x",
+      "tech": "enovia",
+      "refProject": "",
+      "contact": "Ramesh",
+      "status": "Pending",
+      "remarks": ""
+    },
+    {
+      "title": "Test Component 2",
+      "description": "Test component description",
+      "domain": "PLM",
+      "release": "2022x",
+      "tech": "enovia",
+      "refProject": "",
+      "contact": "John",
+      "status": "Available",
+      "remarks": ""
+    }
+  ]

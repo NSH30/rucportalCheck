@@ -2,7 +2,7 @@
   <v-app>
     <v-row>
       <v-col class="text-right"
-        ><v-btn small @click="btn1" class="ma-2" depressed color="primary"
+        ><v-btn small @click="requestedfilter()" class="ma-2" depressed color="primary"
           >My Request
         </v-btn>
         <v-btn small dark @click="btn2" depressed color="primary">All component </v-btn>
@@ -26,9 +26,10 @@
           headerClass="tableHeader"
           :itemsPerPage="10"
         />
+
         <MyRequestTable
           v-if="bt1"
-          :headers="childHeader"
+          :headers="headers"
           :data="rows"
           :config="config"
           @onActionTrigger="onTableRowSelection"
@@ -36,7 +37,7 @@
           :itemsPerPage="10"
         />
 
-        <admin-request
+        <!--  <admin-request
           v-if="bt3"
           :headers="childHeader"
           :data="rows"
@@ -45,8 +46,7 @@
           headerClass="tableHeader"
           :itemsPerPage="10"
         >
-        </admin-request>
-
+        </admin-request> -->
         <admin-panel
           v-if="bt3"
           :headers="headers"
@@ -84,11 +84,12 @@ import MyRequestTable from "./myRequestTable.vue";
 import CustomCellTable from "./custom-cell-table.vue";
 /* import RequestDialog from "./request-RUC-dialog.vue"; */
 import AdminPanel from "./admin-panel.vue";
-import AdminRequest from "./admin-request.vue";
+/* import AdminRequest from "./admin-request.vue"; */
 import AddRUC from "./addRUC.vue";
 import headers from "../assets/config/headers.json";
 import formData from "../assets/config/data.json";
 import fields from "../assets/config/fields.json";
+import responseData from "../assets/config/responseData.json";
 
 Vue.use(Vuetify);
 
@@ -96,12 +97,9 @@ export default {
   name: "App",
   components: {
     CustomCellTable,
-    //RequestDialog,
     MyRequestTable,
     AdminPanel,
-    AdminRequest,
     AddRUC,
-    // PreviewRuc,
   },
   data() {
     return {
@@ -126,7 +124,7 @@ export default {
           text: "Status",
           value: "status",
           filter: (value) => {
-            return value == "Requested";
+            return value == "Requested" /* || value == "Pending" */;
           },
         },
         { text: "Actions", value: "action" },
@@ -136,7 +134,7 @@ export default {
       rows: [],
       myloadingvariable: false,
       selectedRows: [],
-      //isPreviewVisible: false,
+      isPreviewVisible: false,
     };
   },
   mounted: async function () {
@@ -144,41 +142,7 @@ export default {
     this.myloadingvariable = true;
     //const response = await Service.getReusableComponents();
     //add more test data if required
-    const response = [
-      {
-        title: "Test Component 1",
-        description: "Test component description",
-        domain: "PLM",
-        release: "2022x",
-        tech: "enovia",
-        refProject: "",
-        contact: "Ravi",
-        status: "Requested",
-        remarks: "",
-      },
-      {
-        title: "Test Component 2",
-        description: "Test component description",
-        domain: "PLM",
-        release: "2022x",
-        tech: "enovia",
-        refProject: "",
-        contact: "Ramesh",
-        status: "Pending",
-        remarks: "",
-      },
-      {
-        title: "Test Component 2",
-        description: "Test component description",
-        domain: "PLM",
-        release: "2022x",
-        tech: "enovia",
-        refProject: "",
-        contact: "John",
-        status: "Available",
-        remarks: "",
-      },
-    ];
+    const response = responseData;
     response.forEach((r) => {
       const e = {
         ...r,
@@ -189,6 +153,12 @@ export default {
     this.myloadingvariable = false;
   },
   methods: {
+    requestedfilter() {
+      this.btn2 = true;
+      return this.responseData.filter(
+        (responseData) => responseData.status == "Requested"
+      );
+    },
     cancel() {
       this.dialog = false;
     },
