@@ -5,7 +5,6 @@
     :items-per-page="itemsPerPage"
     class="elevation-3"
     :search="search"
-    :custom-filter="requested"
     :loading="loading"
     :loading-text="loadingText"
     :page="selectedPage"
@@ -23,13 +22,17 @@
               @click="iconAction"
               class="ma-1"
             >
-              {{ action.iconName }}</v-icon
-            >
+              {{ action.iconName }}
+              <previewRuc
+                v-if="isPreviewvisible"
+                :RUCId="selectedComponentId"
+                :info="data"
+              />
+            </v-icon>
           </template>
           <span>{{ action.Tooltip }}</span>
         </v-tooltip>
       </span>
-      <previewRuc v-if="isPreviewvisible" :RUCId="selectedComponentId" :info="data" />
     </template>
   </v-data-table>
 </template>

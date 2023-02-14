@@ -3,7 +3,8 @@
     <v-dialog max-width="600" v-model="dialog">
       <template v-slot:default="dialog">
         <v-card>
-          <v-toolbar color="primary" dark>Approve/Reject Request
+          <v-toolbar color="primary" dark
+            >Approve/Reject Request
             <v-spacer></v-spacer>
             <v-icon>mdi-co</v-icon>
           </v-toolbar>
@@ -26,12 +27,7 @@
             <v-btn color="primary" small dark @click="dialog.value = false"
               >Approve</v-btn
             >
-            <v-btn
-              color="error"
-              small
-              primary
-              dark
-              @click="dialog.value = false"
+            <v-btn color="error" small primary dark @click="dialog.value = false"
               >Reject</v-btn
             >
           </v-card-actions>
@@ -39,13 +35,7 @@
       </template>
     </v-dialog>
 
-    <v-expansion-panels
-      focusable
-      accordion
-      v-model="panel"
-      :disabled="disabled"
-      multiple
-    >
+    <v-expansion-panels focusable accordion v-model="panel" :disabled="disabled" multiple>
       <v-expansion-panel>
         <v-expansion-panel-header>Pending Approval</v-expansion-panel-header>
         <v-expansion-panel-content>

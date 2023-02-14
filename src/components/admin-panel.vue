@@ -12,6 +12,7 @@
       <v-expansion-panel-content>
         <customCellTable
           :headers="headers"
+          :custom-filter="Pending"
           :data="data"
           :config="config"
           headerClass="tableHeader"

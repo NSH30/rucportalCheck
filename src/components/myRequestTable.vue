@@ -3,6 +3,7 @@
     :headers="headers"
     :data="data"
     :config="config"
+    :custom-filter="Requested"
     headerClass="tableHeader"
     :itemsPerPage="10"
   />
