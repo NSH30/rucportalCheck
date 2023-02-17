@@ -1,5 +1,6 @@
 
-  [
+ {
+    "Headers": [
     {
       "text": "Title",
       "align": "start",
@@ -18,6 +19,22 @@
     { "text": "Published On", "value": "published" },
     { "text": "Remarks", "value": "remarks" },
     { "text": "Actions", "value": "action" }
-  ]
+  ],
 
+  "ReqHeaders":[
+    {
+      "text": "Title",
+      "align": "start",
+      "filterable": true,
+      "value": "title"
+    },
+    { "text": "Description", "value": "description" },
+    { "text": "Contact Person", "value": "contact" },
+    {
+      "text": "Status",
+      "value": "status"      
+    },
+    { "text": "Actions", "value": "action" }
+  ]
   
+}

@@ -19,15 +19,10 @@
               v-on="on"
               medium
               :color="action.iconColor"
-              @click="iconAction"
+              @click="iconActions()"
               class="ma-1"
             >
               {{ action.iconName }}
-              <previewRuc
-                v-if="isPreviewvisible"
-                :RUCId="selectedComponentId"
-                :info="data"
-              />
             </v-icon>
           </template>
           <span>{{ action.Tooltip }}</span>
@@ -38,18 +33,11 @@
 </template>
 
 <script>
-import icons from "../assets/config/icons.json";
-import previewRuc from "../components/Preview_ruc.vue";
-
 export default {
-  components: {
-    previewRuc,
-  },
   data() {
     return {
       search: "",
-      config: icons.config,
-      isPreviewvisible: false,
+      isPreviewVisible: false,
     };
   },
   props: {
@@ -61,7 +49,10 @@ export default {
       type: Array,
       required: true,
     },
-
+    config: {
+      type: Array,
+      Required: true,
+    },
     loading: {
       type: Boolean,
       default: false,
@@ -88,11 +79,8 @@ export default {
     },
   },
   methods: {
-    iconAction(config) {
-      console.log("******inIconActions********");
-      if (config.event === "requestAccess") {
-        this.isPreviewvisible = true;
-      }
+    iconActions() {
+      this.$emit("onActiontrigger");
     },
   },
 };

@@ -1,10 +1,39 @@
-{"config": [    
-      {"iconName": "mdi-eye-outline"},
+{"AllComponents": [    
+      {
+        "iconName": "mdi-eye-outline",
+        "iconColor": "#77797C",
+        "event": "requestAccess",
+        "Tooltip": "Request-Preview"        
+      }
+  ],
+  "MyRequests": [    
+      {
+        "iconName": "mdi-eye-outline",
+        "iconColor": "#77797C",
+        "event": "requestAccess",
+        "Tooltip": "Request-Preview"        
+      }, 
+       
+      {
+        "iconName": "mdi-content-copy",
+        "iconColor": "#77797C",
+        "event": "copyComponent",
+        "Tooltip": "Copy-Component"
+      },
 
-      {"iconColor": "#77797C"},
-
-      {"event": "requestAccess"},
-
-      {"Tooltip": "Request-Preview"}  
+      {
+        "iconName": "mdi-cancel",
+        "iconColor": "#77797C",
+        "event": "cancelRequest",
+        "Tooltip": "Cancel Request"
+      }
+  ],
+  "AdminRequests": [    
+      {
+        "iconName": "mdi-alpha-a",
+        "iconColor": "#77797C",
+        "event": "approve",
+        "Tooltip": "Approve Request"
+      }
   ]
 }

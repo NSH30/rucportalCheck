@@ -2,73 +2,39 @@
   <v-app>
     <v-row>
       <v-col class="text-right"
-        ><v-btn small @click="requestedfilter()" class="ma-2" depressed color="primary"
+        ><v-btn small @click="btn1()" class="ma-2" depressed dark color="#085889"
           >My Request
         </v-btn>
-        <v-btn small dark @click="btn2" depressed color="primary">All component </v-btn>
-        <v-btn small dark @click="btn3" class="ma-2" depressed color="primary"
+        <v-btn small dark @click="btn2()" depressed color="#085889">All component </v-btn>
+        <v-btn small dark @click="btn3()" class="ma-2" depressed color="#085889"
           >Admin
         </v-btn>
 
-        <AddRUC
+        <RucForm
           :fields="fields"
           :formData="formData"
           @closeform="cancel()"
           @addform="addform()"
         />
-
-        <CustomCellTable
-          v-if="bt2"
-          :headers="headers"
-          :data="rows"
-          :config="config"
-          @onActionTrigger="onTableRowSelection"
-          headerClass="tableHeader"
-          :itemsPerPage="10"
-        />
+        <allcomonentview v-show="bt2" :itemsPerPage="10" />
 
         <MyRequestTable
-          v-if="bt1"
-          :headers="headers"
+          v-show="bt1"
+          :headers="reqHeaders"
           :data="rows"
-          :config="config"
-          @onActionTrigger="onTableRowSelection"
+          :config="MyreqIcons"
           headerClass="tableHeader"
           :itemsPerPage="10"
         />
 
-        <!--  <admin-request
-          v-if="bt3"
-          :headers="childHeader"
-          :data="rows"
-          :config="config"
-          @onActionTrigger="onTableRowSelection"
-          headerClass="tableHeader"
-          :itemsPerPage="10"
-        >
-        </admin-request> -->
-        <admin-panel
-          v-if="bt3"
+        <AdminComponent
+          v-show="bt3"
           :headers="headers"
+          :reqHeaders="reqHeaders"
           :data="rows"
-          :config="config"
-          @onActionTrigger="onTableRowSelection"
           headerClass="tableHeader"
           :itemsPerPage="10"
-        ></admin-panel>
-        <!-- 
-        <RequestDialog
-          v-if="isModalVisible"
-          @close="isModalVisible = false"
-          :RUCId="selectedComponentId"
-        /> -->
-
-        <!--  <PreviewRuc
-          :info="rows"
-          v-if="isPreviewVisible"
-          @closeDialog="cancel()"
-          :RUCId="selectedComponentId"
-        /> -->
+        />
       </v-col>
     </v-row>
   </v-app>
@@ -77,33 +43,30 @@
 <script>
 import Vue from "vue";
 import Vuetify from "vuetify";
-import MyRequestTable from "./myRequestTable.vue";
-
-// import Service from "../scripts/RUCService";
-/* import PreviewRuc from "./Preview_ruc.vue"; */
-import CustomCellTable from "./custom-cell-table.vue";
-/* import RequestDialog from "./request-RUC-dialog.vue"; */
-import AdminPanel from "./admin-panel.vue";
-/* import AdminRequest from "./admin-request.vue"; */
-import AddRUC from "./addRUC.vue";
+import MyRequestTable from "./myrequests-view.vue";
+/* import TableComponent from "./Table-Component.vue"; */
+import AdminComponent from "./admin-view.vue";
+import RucForm from "./RucForm-Component.vue";
 import headers from "../assets/config/headers.json";
 import formData from "../assets/config/data.json";
 import fields from "../assets/config/fields.json";
 import responseData from "../assets/config/responseData.json";
+import icons from "../assets/config/icons.json";
+import allcomonentview from "./allcomponent-view";
 
 Vue.use(Vuetify);
 
 export default {
   name: "App",
   components: {
-    CustomCellTable,
+    /* TableComponent, */
     MyRequestTable,
-    AdminPanel,
-    AddRUC,
+    AdminComponent,
+    RucForm,
+    allcomonentview,
   },
   data() {
     return {
-      selectedComponentId: "",
       fields: fields.fields,
       formData: formData,
       formbool: false,
@@ -111,30 +74,15 @@ export default {
       bt2: true,
       bt3: false,
       search: "",
-      childHeader: [
-        {
-          text: "Title",
-          align: "start",
-          filterable: true,
-          value: "title",
-        },
-        { text: "Description", value: "description" },
-        { text: "Contact Person", value: "contact" },
-        {
-          text: "Status",
-          value: "status",
-          filter: (value) => {
-            return value == "Requested" /* || value == "Pending" */;
-          },
-        },
-        { text: "Actions", value: "action" },
-      ],
-      headers: headers,
-
+      headers: headers.Headers,
+      reqHeaders: headers.ReqHeaders,
+      AllcompIcons: icons.AllComponents,
+      MyreqIcons: icons.MyRequests,
       rows: [],
       myloadingvariable: false,
       selectedRows: [],
       isPreviewVisible: false,
+      approvedialog: false,
     };
   },
   mounted: async function () {
@@ -153,32 +101,22 @@ export default {
     this.myloadingvariable = false;
   },
   methods: {
-    requestedfilter() {
-      this.btn2 = true;
-      return this.responseData.filter(
-        (responseData) => responseData.status == "Requested"
-      );
+    approveClick() {
+      this.approvedialog = true;
     },
-    cancel() {
-      this.dialog = false;
+
+    PreviewVisible() {
+      this.isPreviewVisible = true;
     },
+
     addform() {
       //this.dialog=false;
       console.log("formdata", this.formData);
     },
-    cancelPreview() {
-      this.isPreviewVisible = false;
-    },
+
     formBool() {
       this.formbool = true;
     },
-    /*  onTableRowSelection(data) {
-      console.log("----- in onTableRowSelection -----");
-      if (data.config.event === "requestAccess") {
-        this.isPreviewVisible = true;
-        this.selectedComponentId = data.id;
-      }
-    }, */
 
     btn1() {
       this.bt1 = true;
