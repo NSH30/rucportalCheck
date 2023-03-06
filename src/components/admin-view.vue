@@ -1,15 +1,13 @@
 <template>
   <div>
-    <!--  <div v-show="showPreview"> -->
     <PreviewComponent
       :info="data"
       :previewDialog="previewDialog"
-      @closeDialog="close()"
+      @closeDialog="previewDialog = false"
     />
-    <!-- </div>
-    <div v-show="showAdminActions"> -->
+
     <Approvedialog :data="data" :approveDialog="approveDialog" />
-    <!-- </div> -->
+
     <v-expansion-panels
       focusable
       flat
@@ -120,20 +118,6 @@ export default {
       this.approveDialog = true;
     },
   },
-  close() {
-    this.previewDialog = false;
-  },
-  /* pagination(pageInformation) {
-    this.$emit("onPagination", pageInformation);
-  }, */
-  /* watch: {
-    data() {
-      this.configureTable();
-    },
-  }, */
-  /*  created() {
-    this.configureTable();
-  }, */
 };
 </script>
 

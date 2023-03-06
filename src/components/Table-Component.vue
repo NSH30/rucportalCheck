@@ -11,6 +11,11 @@
     :fixed-header="fixedHeader"
     @pagination="pagination"
   >
+    <template v-slot:[`item.status`]="{ item }">
+      <v-chip :color="getColor(item.status)" dark>
+        {{ item.status }}
+      </v-chip>
+    </template>
     <template v-slot:[`item.action`]="{}">
       <span v-for="(action, index) in config" :key="index">
         <v-tooltip top>
@@ -81,6 +86,11 @@ export default {
   methods: {
     iconActions() {
       this.$emit("onActiontrigger");
+    },
+    getColor(status) {
+      if (status == "Pending") return "red";
+      else if (status == "Requested") return "orange";
+      else return "green";
     },
   },
 };

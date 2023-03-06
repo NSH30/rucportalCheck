@@ -32,6 +32,7 @@ export default {
       ispreviewVisible: false,
       showPreview: false,
       previewDialog: true,
+      link: "http//Hello",
     };
   },
   props: {
@@ -70,19 +71,38 @@ export default {
   },
   methods: {
     requestActions() {
-      this.showPreview = true;
-      /* console.log("****insideMyrequests ocmponent");
+      /*  switch (this.config.value == "event") {
+        case "requestAccess":
+          this.Preview();
+          break;
+        case "copyComponent":
+          this.copyLink();
+          break;
+        case "cancelRequest":
+          this.cancelReq();
+          break;
+      } */
       this.config.forEach((element) => {
         if (element.event == "requestAccess") {
-          this.isPreviewVisible = true;
-        }
-        if (element.event == "copyComponent") {
-          console.log("**************linkCopied*********");
+          this.showPreview = true;
+        } else if (element.event == "copyComponent") {
+          const el = document.createElement("textarea");
+          el.value = this.link;
+          document.body.appendChild(el);
+          el.select;
+          document.execCommand("copy");
+          document.body.removeChild(el);
+          this.$toast.success("Link Copied to Clipboard");
         } else {
           console.log("*******cancelRequest*********");
         }
-      }); */
+      });
     },
+
+    Preview() {
+      this.showPreview = true;
+    },
+
     close() {
       this.showPreview = false;
     },

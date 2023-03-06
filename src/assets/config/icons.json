@@ -3,7 +3,7 @@
         "iconName": "mdi-eye-outline",
         "iconColor": "#77797C",
         "event": "requestAccess",
-        "Tooltip": "Request-Preview"        
+        "Tooltip": "Request Preview"        
       }
   ],
   "MyRequests": [    
@@ -11,14 +11,14 @@
         "iconName": "mdi-eye-outline",
         "iconColor": "#77797C",
         "event": "requestAccess",
-        "Tooltip": "Request-Preview"        
+        "Tooltip": "Request Preview"        
       }, 
        
       {
         "iconName": "mdi-content-copy",
         "iconColor": "#77797C",
         "event": "copyComponent",
-        "Tooltip": "Copy-Component"
+        "Tooltip": "Copy Link"
       },
 
       {

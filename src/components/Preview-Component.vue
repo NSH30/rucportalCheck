@@ -1,10 +1,5 @@
 <template>
   <v-dialog v-model="preview" fullscreen transition="dialog-top-transition">
-    <!--  <template v-slot:activator="{ on, attrs }">
-      <v-btn color="primary" @click="viewPreview()" dark v-bind="attrs" v-on="on">
-        Open Dialog
-      </v-btn>
-    </template> -->
     <transition name="fade">
       <v-card class="PreviewRUC" transition="scale-transition">
         <v-row no-gutters>
@@ -56,7 +51,7 @@
 
         <v-form ref="form" lazy-validation>
           <v-row>
-            <v-col class="mx-2">
+            <v-col class="mx-6">
               <v-text-field
                 v-model="RUC.purpose"
                 :rules="[(v) => !!v || 'Purpose is required']"
@@ -67,7 +62,7 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col class="mx-2">
+            <v-col class="mx-6">
               <v-text-field
                 v-model="RUC.project"
                 :rules="[(v) => !!v || 'Project is required']"
@@ -130,10 +125,6 @@ export default {
     previewDialog: {
       type: Boolean,
       default: false,
-    },
-    RUCId: {
-      type: Text,
-      default: "",
     },
   },
   computed: {
